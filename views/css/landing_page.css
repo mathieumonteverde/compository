@@ -1,0 +1,34 @@
+.landing-page-cover {
+  position: relative;
+  background-color: black;
+  background-image: url('../img/flat_space.png');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-page-cover h1 {
+  padding-bottom: 0.5em;
+  margin-bottom: 0;
+  color: white;
+  font-size: 4em;
+  text-transform: uppercase;
+  font-weight: bolder;
+  border-bottom: solid 0.05em white;
+}
+
+.landing-page-cover h2 {
+  padding: 0.5em;
+  margin-top: 0;
+  color: white;
+  font-weight: lighter;
+  font-size: 2em;
+  background-color: rgba(0, 0, 0, 0.6)
+}
+
+.landing-page-cover .call-to-action {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  width: 100%;
+}
