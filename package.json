@@ -12,7 +12,8 @@
   "contributors": [],
   "dependencies": {
     "ejs": "^2.5.7",
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "promise": "^8.0.1"
   },
   "main": "main.js",
   "scripts": {
