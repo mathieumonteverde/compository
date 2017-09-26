@@ -15,7 +15,7 @@ $(document).ready(() => {
       // Show empty input repository alert
       $('#alert-empty-repository').show(500);
       setTimeout(() => { $('#alert-empty-repository').hide(500); }, 4000);
-    } else if ($(`.list-group-item[data-repository-url=${repositoryUrl}]`).length > 0) {
+    } else if ($(`.list-group-item[data-repository-url=\'${repositoryUrl}\']`).length > 0) {
       // Show existing repositiory input
       $('#alert-exist-repository').show(500);
       setTimeout(() => { $('#alert-exist-repository').hide(500); }, 4000);
