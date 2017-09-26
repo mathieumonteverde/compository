@@ -22,17 +22,17 @@
 
 /* Large padding */
 .padding-lg {
-  padding: 15%;
+  padding: 15% 0;
 }
 
 /* Medium padding */
 .padding-md {
-  padding: 10%;
+  padding: 10% 0;
 }
 
 /* Small padding */
 .padding-sm {
-  padding: 5%;
+  padding: 5% 0;
 }
 
 /* Large margin */
@@ -42,12 +42,12 @@
 
 /* Medium margin */
 .margin-md {
-  margin: 10%;
+  margin: 10% 0;
 }
 
 /* Small margin */
 .margin-sm {
-  margin: 5%;
+  margin: 5% 0;
 }
 
 /* Shadow */
