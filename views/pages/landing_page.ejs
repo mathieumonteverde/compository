@@ -9,12 +9,13 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.theme.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
 
     <!-- Application CSS -->
     <link rel="stylesheet" href="/views/css/utils.css">
     <link rel="stylesheet" href="/views/css/page_cover.css">
     <link rel="stylesheet" href="/views/css/landing_page.css">
+    <link rel="stylesheet" href="/views/css/repository_selection.css">
 
 
     <!-- Bootstrap .js file -->
@@ -22,18 +23,65 @@
   </head>
   <body>
 
-    <section class="col-md-12 text-center display-height landing-page-cover page-cover align-middle">
+    <!-- Landing page cover -->
+    <section class="row text-center display-height landing-page-cover page-cover">
       <article>
         <h1>Compository</h1>
-        <h2>The best tool to compare the activity of GitHub repositories</h2>
+        <h2>The tool to compare the activity of GitHub repositories.</h2>
       </article>
       <article class="call-to-action">
-        <button type="button" class="btn btn-secondary btn-lg">What's the point ?</button>
-        <button type="button" class="btn btn-primary btn-lg">Start Comparing !</button>
+        <button type="button" data-scroll-target="about" class="scroll-action btn btn-secondary btn-lg">What's the point ?</button>
+        <button type="button" data-scroll-target="compare" class="scroll-action btn btn-primary btn-lg">Start Comparing !</button>
       </article>
     </section>
 
+    <!-- About & Purpose section -->
+    <section id="about" class="row light-bg padding-md text-center">
+      <article class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 white-bg padding-sm box-shadow text-justify">
+        <h1 class="text-center">What's the point ?</h1>
+        <hr />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Curabitur augue nunc, porta ac nunc et, convallis sodales felis.
+          Integer vitae ex quam. Fusce rhoncus lectus nec augue vestibulum, at tincidunt leo molestie.
+          Fusce convallis ut urna in dictum. Phasellus dignissim tempus nunc, et viverra nulla hendrerit eu.
+        </p>
+        <p>
+          Curabitur at massa at dolor efficitur lobortis.
+          Pellentesque est tellus, placerat ut dui vel, pulvinar mattis erat.
+        </p>
+        <article class="text-center">
+          <button type="button" data-scroll-target="compare" class="btn btn-primary btn-lg margin-sm scroll-action">Start Comparing !</button>
+        </article>
+      </article>
+    </section>
+
+    <!-- Compare section -->
+    <section id="compare" class="row padding-md text-center">
+      <article class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 text-center box-shadow padding-sm">
+        <h1>Compare repositories</h1>
+        <hr/>
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">https://github.com/</span>
+          <input type="text" class="form-control repository-input" placeholder="username/repository" aria-label="username/repository" aria-describedby="basic-addon1">
+          <span class="input-group-addon" id="add-repository">Add</span>
+        </div>
+        <button id="compare-button" type="button" class="btn btn-primary btn-lg disabled margin-sm">Compare...</button>
+        <article class="repository-list text-left">
+          <h5>Repositories to compare:</h5>
+          <ul class="list-group">
+            <li class="list-group-item repository-list-item-template">
+              <span class="url"></span>
+              <span class="control control-delete">remove</span>
+            </li>
+          </ul>
+        </article>
+      </article>
+
+    </section>
 
 
+    <!-- Scripts entry point -->
+    <script type="text/javascript" src="/views/js/scripts.js"></script>
   </body>
 </html>

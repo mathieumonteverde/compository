@@ -1,0 +1,21 @@
+.repository-list-item-template {
+  display: none;
+}
+.repository-list .list-group {
+  position: relative;
+}
+.repository-list .list-group-item .control {
+  position: absolute;
+  right: 15px;
+  content: 'remove';
+  font-size: 0.8em;
+  color: rgba(100, 100, 100, 0.4);
+  cursor: pointer;;
+}
+.repository-list .list-group-item .control:hover {
+  color: #721c24;
+}
+
+.repository-list ul li:nth-child(odd) {
+  background-color: #eeeeee;
+}

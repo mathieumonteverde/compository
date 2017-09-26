@@ -1,3 +1,67 @@
+/**
+  file: utils.css
+  author: Mathieu Monteverde
+  date: 26.09.2017
+  description: This file contains utility classes for micro styling element.
+*/
+
+/* Full screen height */
 .display-height {
   height: 100vh;
+}
+
+/* Light background */
+.light-bg {
+  background-color: #feece0;
+}
+
+/* White background */
+.white-bg {
+  background-color: white;
+}
+
+/* Large padding */
+.padding-lg {
+  padding: 15%;
+}
+
+/* Medium padding */
+.padding-md {
+  padding: 10%;
+}
+
+/* Small padding */
+.padding-sm {
+  padding: 5%;
+}
+
+/* Large margin */
+.margin-lg {
+  margin: 15% 0;
+}
+
+/* Medium margin */
+.margin-md {
+  margin: 10%;
+}
+
+/* Small margin */
+.margin-sm {
+  margin: 5%;
+}
+
+/* Shadow */
+.box-shadow {
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Line separators */
+hr {
+  display: block;
+  width: 200px;
+  height: 2px;
+  background-color: #333;
+}
+hr.light {
+  background-color: white;
 }

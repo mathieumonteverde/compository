@@ -8,13 +8,14 @@
 }
 
 .landing-page-cover h1 {
-  padding-bottom: 0.5em;
+  padding-bottom: 0.3em;
   margin-bottom: 0;
   color: white;
   font-size: 4em;
   text-transform: uppercase;
   font-weight: bolder;
-  border-bottom: solid 0.05em white;
+  letter-spacing: 0.05em;
+  border-bottom: solid 0.03em white;
 }
 
 .landing-page-cover h2 {
@@ -22,7 +23,8 @@
   margin-top: 0;
   color: white;
   font-weight: lighter;
-  font-size: 2em;
+  font-size: 1.7em;
+  letter-spacing: 0.03em;
   background-color: rgba(0, 0, 0, 0.6)
 }
 
