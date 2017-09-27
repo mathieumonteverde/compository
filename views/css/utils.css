@@ -20,6 +20,11 @@
   background-color: white;
 }
 
+/* Pattern background */
+.pattern-bg {
+  background-image: url('../img/pattern_bg.jpg');
+}
+
 /* Large padding */
 .padding-lg {
   padding: 15% 0;
