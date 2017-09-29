@@ -19,6 +19,10 @@ app.get('/landing_page', (req, res) => {
   res.render('pages/landing_page');
 });
 
+app.get('/compare', (req, res) => {
+  res.render('pages/compare');
+});
+
 // Example d'utilisation
 app.get('/test', (req, res) => {
   const getRepo = new Promise((resolve, reject) => {

@@ -4,6 +4,10 @@
 .repository-list .list-group {
   position: relative;
 }
+
+#add-repository {
+  cursor: pointer;
+}
 .repository-list .list-group-item .control {
   position: absolute;
   right: 15px;

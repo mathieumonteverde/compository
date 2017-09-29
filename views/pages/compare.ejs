@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Compare | Compository</title>
+
+    <!-- Jquery -->
+    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+
+    <!-- Application CSS -->
+    <link rel="stylesheet" href="/views/css/utils.css">
+    <link rel="stylesheet" href="/views/css/page_cover.css">
+    <link rel="stylesheet" href="/views/css/repository_selection.css">
+    <link rel="stylesheet" href="/views/css/repository_overview.css">
+
+
+    <!-- Bootstrap .js file -->
+    <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <section class="container-fluid">
+      <section class=" row repository-graphic-compare display-height">
+
+      </section>
+
+      <section class="row comparison-results pattern-bg-light padding-md">
+        <article class="col-md-12">
+          <h1 class="text-center"> Comparison results </h1>
+
+          <section class="repository-listing">
+            <% include ../partials/repository_overview %>
+              <% include ../partials/repository_overview %>
+                <% include ../partials/repository_overview %>
+                  <% include ../partials/repository_overview %>
+          </section>
+
+
+        </article>
+      </section>
+
+
+    </section>
+
+  </body>
+</html>
