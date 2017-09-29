@@ -93,7 +93,7 @@
               <article class="repository-list text-left">
                 <h5>Repositories to compare:</h5>
                 <ul class="list-group">
-                  <li class="list-group-item repository-list-item-template">
+                  <li class="list-group-item repository-list-item repository-list-item-template">
                     <span class="url"></span>
                     <span class="control control-delete">remove</span>
                   </li>
@@ -104,6 +104,11 @@
           </section> <!-- End of nested row -->
 
         </article>
+
+        <form id="compare-form" class="hidden" action="/compare" method="POST">
+          <input id="compare-json" type="text" name="repositories" value=""/>
+          <input id="compare-submit" type="submit" value="Submit">
+        </form>
 
       </section>
 

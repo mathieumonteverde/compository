@@ -1,3 +1,32 @@
+/*
+  Create the HTML form to make a POST request with repository information.
+*/
+function createRepositoryForm() {
+  // Container object
+  const repositoryContainer = {
+    repositories: []
+  };
+
+  // Retrieve repositories information from the DOM
+  $('.repository-list-item').not('.repository-list-item-template').each(function() {
+
+    const repositoryValues = $(this).attr('data-repository-url').split('/');
+    repositoryContainer.repositories.push({
+      user: repositoryValues[0],
+      repository: repositoryValues[1]
+    });
+
+    // Populate the form
+    $('#compare-json').val(JSON.stringify(repositoryContainer));
+
+    // Send the form
+    $("#compare-form").submit();
+
+  });
+
+
+}
+
 $(document).ready(() => {
   /* Register event to scroll to targeted elements on button click */
   $('.scroll-action').click(function () {
@@ -6,7 +35,7 @@ $(document).ready(() => {
   });
 
   /* Register event for the click on add repository button */
-  $('#add-repository').click(function () {
+  $('#add-repository').click(function() {
     // Retrieve repository url input
     const repositoryUrl = $(this).siblings('.repository-input').val();
 
@@ -21,6 +50,13 @@ $(document).ready(() => {
       setTimeout(() => { $('#alert-exist-repository').hide(500); }, 4000);
     } else {
       addRepositoryToList(repositoryUrl);
+    }
+  });
+
+  /* Register event on compare button click */
+  $('#compare-button').click(() => {
+    if (!$('this').hasClass('disabled')) {
+      createRepositoryForm();
     }
   });
 });

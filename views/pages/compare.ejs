@@ -33,10 +33,10 @@
           <h1 class="text-center"> Comparison results </h1>
 
           <section class="repository-listing">
-            <% include ../partials/repository_overview %>
-              <% include ../partials/repository_overview %>
-                <% include ../partials/repository_overview %>
-                  <% include ../partials/repository_overview %>
+
+            <% for(var i=0; i < data.repositories.length; i++) { %>
+              <%- include("../partials/repository_overview", {data: data.repositories[i]}) %>
+            <% } %>
           </section>
 
 

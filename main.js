@@ -1,8 +1,14 @@
 const express = require('express');
 const githubapi = require('./githubapi.js');
+const bodyParser = require('body-parser')
 
 const app = express();
 
+// Spécifie le port d'accès au serveur
+app.listen(9090);
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Configuration du moteur de vue
 app.set('view engine', 'ejs');
@@ -19,8 +25,20 @@ app.get('/landing_page', (req, res) => {
   res.render('pages/landing_page');
 });
 
+/* GET compare for view test and development purpose */
 app.get('/compare', (req, res) => {
   res.render('pages/compare');
+});
+
+/* POST compare to get repositoriy data requests */
+app.post('/compare', (req, res) => {
+  // Parse Form JSON information
+  const info = JSON.parse(req.body.repositories);
+  
+  // Render the view
+  res.render('pages/compare', {
+    data: info,
+  });
 });
 
 // Example d'utilisation
@@ -87,6 +105,3 @@ app.get('/test', (req, res) => {
       });
     });
 });
-
-// Spécifie le port d'accès au serveur
-app.listen(9090);
