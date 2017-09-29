@@ -20,6 +20,20 @@
   background-color: white;
 }
 
+/* Pattern backgrounds */
+.pattern-bg-white {
+  background-image: url('../img/pattern_bg_white.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.pattern-bg-light {
+  background-image: url('../img/pattern_bg_light.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* Large padding */
 .padding-lg {
   padding: 15% 0;
