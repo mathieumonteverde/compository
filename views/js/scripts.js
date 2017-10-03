@@ -19,10 +19,10 @@ function createRepositoryForm() {
     // Populate the form
     $('#compare-json').val(JSON.stringify(repositoryContainer));
 
-    // Send the form
-    $("#compare-form").submit();
-
   });
+
+  // Send the form
+  $("#compare-form").submit();
 
 
 }
