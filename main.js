@@ -27,7 +27,7 @@ app.get('/landing_page', (req, res) => {
 
 /* GET compare for view test and development purpose */
 app.get('/compare', (req, res) => {
-  res.render('pages/compare');
+  res.render('pages/compare_get');
 });
 
 /*
