@@ -79,3 +79,26 @@ hr {
 hr.light {
   background-color: white;
 }
+
+/* Basic icon list item */
+.icon-list-item {
+  font-size: 1em;
+  padding-left: 2em;
+  background-size: 1em;
+  background-position: 0.5em center;
+  background-repeat: no-repeat;
+}
+
+/* Icons */
+.last-update-icon {
+  background-image: url('../img/last_updated_icon.svg');
+}
+.contributor-icon {
+  background-image: url('../img/contributor_icon.svg');
+}
+.commit-icon {
+  background-image: url('../img/commit_icon.svg');
+}
+.issue-icon {
+  background-image: url('../img/issue_icon.svg');
+}
