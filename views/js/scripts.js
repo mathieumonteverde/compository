@@ -16,15 +16,13 @@ function createRepositoryForm() {
       repository: repositoryValues[1]
     });
 
-    // Populate the form
-    $('#compare-json').val(JSON.stringify(repositoryContainer));
-
   });
 
+  // Populate the form
+  $('#compare-json').val(JSON.stringify(repositoryContainer));
+
   // Send the form
-  $("#compare-form").submit();
-
-
+  $('#compare-form').submit();
 }
 
 $(document).ready(() => {
