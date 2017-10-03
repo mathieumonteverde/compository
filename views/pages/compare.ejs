@@ -24,18 +24,33 @@
   <body>
 
     <section class="container-fluid">
+      <!--
+      TODO add visual representation of the repo.
       <section class=" row repository-graphic-compare display-height">
 
       </section>
+
+    -->
 
       <section class="row comparison-results pattern-bg-light padding-md">
         <article class="col-md-12">
           <h1 class="text-center"> Comparison results </h1>
 
+          <% if (data.numberOfErrors > 0) { %>
+            <!-- Alert for empty repository input -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+                <div id="alert-error-occured" class="alert alert-danger text-center" role="alert">
+                  Error: Some or all of the repositories could not be found...
+                </div>
+              </div>
+            </div>
+          <% } %>
+
           <section class="repository-listing">
 
-            <% for(var i=0; i < data.repositories.length; i++) { %>
-              <%- include("../partials/repository_overview", {data: data.repositories[i]}) %>
+            <% for (var i=0; i < data.list.length; i++) { %>
+              <%- include("../partials/repository_overview", {data: data.list[i]}) %>
             <% } %>
           </section>
 

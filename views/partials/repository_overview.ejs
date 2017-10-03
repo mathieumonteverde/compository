@@ -1,9 +1,11 @@
-<article class="repository-overview-container margin-sm col-lg-3 col-md-4 col-sm-2 col-xs-12" data-repository-url="/* Repository url */">
-  <section class="repository-overview text-center">
-    <h2> <%= data.repository %> </h2>
-    <h3> <%= data.user %> </h3>
+<article class="repository-overview-container margin-sm col-lg-4 col-md-4 col-sm-6 col-xs-12" data-repository-url="/* Repository url */">
+  <section class="repository-overview text-left">
+    <h2> <%= data.name %> </h2>
+    <h3> <%= data.owner %> </h3>
+    <hr />
     <article class="repositiory-description">
-      /* Description */
+      <%= data.description %>
     </article>
+    <hr />
   </section>
 </article>
