@@ -67,12 +67,18 @@ app.post('/compare', (req, res) => {
       // Increase the number the number of error on repository request
       repositoriesSummary.numberOfErrors += 1;
     } else {
+      // Convert the date of the pushed_at field
+      const date = new Date(json.pushed_at);
+
       // Add the main information to the list of repository summaries
       repositoriesSummary.list.push({
         name: json.name,
         full_name: json.full_name,
         owner: json.owner.login,
         description: json.description,
+        pushed_at: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`,
+        open_issues_count: json.open_issues_count,
+        forks_count: json.forks_count,
       });
     }
 

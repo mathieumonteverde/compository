@@ -102,3 +102,6 @@ hr.light {
 .issue-icon {
   background-image: url('../img/issue_icon.svg');
 }
+.fork-icon {
+  background-image: url('../img/fork_icon.svg');
+}
