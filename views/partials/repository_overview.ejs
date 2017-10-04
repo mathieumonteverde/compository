@@ -3,6 +3,10 @@
     <h2> <%= data.name %> </h2>
     <h3> <%= data.owner %> </h3>
     <hr />
+    <a class="full-name-link" href="https://github.com/<%= data.full_name%>"
+      title="See the repository on GitHub"
+      target="_blank"><%= data.full_name %></a>
+    <hr />
     <article class="repositiory-description">
       <%= data.description %>
     </article>
