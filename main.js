@@ -30,6 +30,18 @@ app.get('/compare', (req, res) => {
   res.render('pages/compare_get');
 });
 
+app.post('/number_commits', (req, res) => {
+  githubapi.getNumberOfCommits(req.body.owner, req.body.repository, (response) => {
+    res.send(response);
+  });
+});
+
+app.post('/number_contributors', (req, res) => {
+  githubapi.getNumberOfCommits(req.body.owner, req.body.repository, (response) => {
+    res.send(response);
+  });
+});
+
 /*
   Process POST requests on /compare path.
 
