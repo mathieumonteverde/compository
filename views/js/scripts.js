@@ -4,7 +4,7 @@
 function createRepositoryForm() {
   // Container object
   const repositoryContainer = {
-    repositories: []
+    repositories: [],
   };
 
   // Retrieve repositories information from the DOM
