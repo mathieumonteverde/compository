@@ -1,4 +1,4 @@
-<article class="repository-overview-container margin-sm col-lg-4 col-md-4 col-sm-6 col-xs-12" data-repository-url="/* Repository url */">
+<article class="repository-overview-container margin-sm col-lg-4 col-md-4 col-sm-6 col-xs-12">
   <section class="repository-overview text-left box-shadow">
     <h2> <%= data.name %> </h2>
     <h3> <%= data.owner %> </h3>
@@ -15,7 +15,7 @@
       <h4>Statistics</h4>
       <ul class="list-group repository-stats-list">
         <li class="list-group-item icon-list-item last-update-icon">Last updated on <%= data.pushed_at %></li>
-        <li class="list-group-item icon-list-item contributor-icon ajax-statistic" data-source="number_collaborators"><% include ../partials/loader %></li>
+        <li class="list-group-item icon-list-item contributor-icon ajax-statistic" data-source="number_contributors"><% include ../partials/loader %></li>
         <li class="list-group-item icon-list-item fork-icon"><%= data.forks_count %> forks</li>
         <li class="list-group-item icon-list-item commit-icon ajax-statistic" data-source="number_commits"><% include ../partials/loader %></li>
         <li class="list-group-item icon-list-item issue-icon"><%= data.open_issues_count %> open issues</li>

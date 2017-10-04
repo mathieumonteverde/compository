@@ -32,13 +32,13 @@ app.get('/compare', (req, res) => {
 
 app.post('/number_commits', (req, res) => {
   githubapi.getNumberOfCommits(req.body.owner, req.body.repository, (response) => {
-    res.send(response);
+    res.send(`${response} commits`);
   });
 });
 
 app.post('/number_contributors', (req, res) => {
-  githubapi.getNumberOfCommits(req.body.owner, req.body.repository, (response) => {
-    res.send(response);
+  githubapi.getNumberOfContributors(req.body.owner, req.body.repository, (response) => {
+    res.send(`${response} contributors`);
   });
 });
 

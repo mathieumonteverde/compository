@@ -108,15 +108,15 @@ $(document).ready(() => {
 
   /* Load each missing statistic through ajax requests */
   $('.ajax-statistic').each(function requestAjaxStatistics() {
-    const repositoryUrl = $(this).parent('repository-stats').siblings('full-name-link').html();
+    const repositoryUrl = $(this).parents('.repository-stats').siblings('.full-name-link').html();
     const repositoryData = getRepositoryInfoFromUrl(repositoryUrl);
-    console.log(repositoryData);
 
     const postUrl = $(this).attr('data-source');
-    console.log(postUrl);
 
-    $.post(postUrl, repositoryData, function successRequest( data ) {
-      $(this).html(data);
+    const target = this;
+
+    $.post(postUrl, repositoryData, (data) => {
+      $(target).html(data);
     });
   });
 });

@@ -21,6 +21,15 @@
         <h1 class="text-center"> Comparison results </h1>
         <hr />
         <article class="col-md-12 pattern-bg-light">
+          <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-6 col-md-6 col-md-offset-6 col-lg-6 col-lg-offset-3 padding-sm">
+            <div class="btn-group" role="group" aria-label="...">
+              <button type="button" class="btn btn-default">Left</button>
+              <button type="button" class="btn btn-default">Middle</button>
+              <button type="button" class="btn btn-default">Right</button>
+            </div>
+          </div>
+
           <% if (data.numberOfErrors > 0) { %>
             <!-- Alert for empty repository input -->
             <div class="row">
@@ -32,7 +41,7 @@
             </div>
           <% } %>
 
-          <section class="repository-listing">
+          <section class="repository-listing row">
 
             <% for (var i=0; i < data.list.length; i++) { %>
               <%- include("../partials/repository_overview", {data: data.list[i]}) %>
