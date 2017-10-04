@@ -105,6 +105,6 @@ app.post('/compare', (req, res) => {
   for (let i = 0; i < info.repositories.length; i += 1) {
     const repositoryInfos = info.repositories[i];
 
-    githubapi.getRepo(repositoryInfos.user, repositoryInfos.repository, processGithubResponse);
+    githubapi.getRepo(repositoryInfos.owner, repositoryInfos.repository, processGithubResponse);
   }
 });
