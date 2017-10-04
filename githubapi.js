@@ -17,19 +17,47 @@ class GitHubAPI {
   }
 
   static getRepo(owner, repo, callback) {
-    this.request(`/repos/${owner}/${repo}`, callback);
+    this.request(`/repos/${owner}/${repo}`, (response) => {
+      let data = '';
+
+      response.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      response.on('end', () => {
+        callback(data);
+      });
+    });
   }
 
-  static getCommits(owner, repo, callback) {
-    this.request(`/repos/${owner}/${repo}/commits`, callback);
+  static getNumberOfCommits(owner, repo, callback) {
+    this.request(`/repos/${owner}/${repo}/commits?per_page=1`, (response) => {
+      const { headers } = response;
+      const { link } = headers;
+
+      let numberOfCommits = 1;
+
+      if (link !== 'undefined') {
+        [, numberOfCommits] = link.match(/(\d+)>; rel="last"$/);
+      }
+
+      callback(numberOfCommits);
+    });
   }
 
-  static getContributors(owner, repo, callback) {
-    this.request(`/repos/${owner}/${repo}/contributors`, callback);
-  }
+  static getNumberOfContributors(owner, repo, callback) {
+    this.request(`/repos/${owner}/${repo}/contributors?per_page=1`, (response) => {
+      const { headers } = response;
+      const { link } = headers;
 
-  static getIssues(owner, repo, callback) {
-    this.request(`/repos/${owner}/${repo}/issues`, callback);
+      let numberOfContributors = 1;
+
+      if (link !== 'undefined') {
+        [, numberOfContributors] = link.match(/(\d+)>; rel="last"$/);
+      }
+
+      callback(numberOfContributors);
+    });
   }
 
   static request(requestPath, callback) {
@@ -42,17 +70,7 @@ class GitHubAPI {
     };
 
     // Traitement de la requête
-    const r = https.request(options, (response) => {
-      let data = '';
-
-      response.on('data', (chunk) => {
-        data += chunk;
-      });
-
-      response.on('end', () => {
-        callback(data);
-      });
-    });
+    const r = https.request(options, callback);
 
     r.end();
   }
