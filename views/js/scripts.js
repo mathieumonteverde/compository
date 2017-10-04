@@ -81,7 +81,7 @@ $(document).ready(() => {
   });
 
   /* Register event for the click on add repository button */
-  $('#add-repository').click(function() {
+  $('#add-repository').click(function addButtonEvent() {
     // Retrieve repository url input
     const repositoryUrl = $(this).siblings('.repository-input').val();
 
@@ -90,7 +90,7 @@ $(document).ready(() => {
       // Show empty input repository alert
       $('#alert-empty-repository').show(500);
       setTimeout(() => { $('#alert-empty-repository').hide(500); }, 4000);
-    } else if ($(`.list-group-item[data-repository-url=\'${repositoryUrl}\']`).length > 0) {
+    } else if ($(`.list-group-item[data-repository-url='${repositoryUrl}']`).length > 0) {
       // Show existing repositiory input
       $('#alert-exist-repository').show(500);
       setTimeout(() => { $('#alert-exist-repository').hide(500); }, 4000);
@@ -104,5 +104,19 @@ $(document).ready(() => {
     if (!$('this').hasClass('disabled')) {
       createRepositoryForm();
     }
+  });
+
+  /* Load each missing statistic through ajax requests */
+  $('.ajax-statistic').each(function requestAjaxStatistics() {
+    const repositoryUrl = $(this).parent('repository-stats').siblings('full-name-link').html();
+    const repositoryData = getRepositoryInfoFromUrl(repositoryUrl);
+    console.log(repositoryData);
+
+    const postUrl = $(this).attr('data-source');
+    console.log(postUrl);
+
+    $.post(postUrl, repositoryData, function successRequest( data ) {
+      $(this).html(data);
+    });
   });
 });

@@ -17,10 +17,10 @@
 
     -->
 
-      <section class="row comparison-results pattern-bg-light padding-md">
-        <article class="col-md-12">
-          <h1 class="text-center"> Comparison results </h1>
-
+      <section class="row comparison-results padding-sm">
+        <h1 class="text-center"> Comparison results </h1>
+        <hr />
+        <article class="col-md-12 pattern-bg-light">
           <% if (data.numberOfErrors > 0) { %>
             <!-- Alert for empty repository input -->
             <div class="row">
@@ -41,7 +41,7 @@
 
         </article>
       </section>
-      
+
     </section>
 
     <% include ../partials/footer %>

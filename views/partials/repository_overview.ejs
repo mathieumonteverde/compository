@@ -15,9 +15,9 @@
       <h4>Statistics</h4>
       <ul class="list-group repository-stats-list">
         <li class="list-group-item icon-list-item last-update-icon">Last updated on <%= data.pushed_at %></li>
-        <li class="list-group-item icon-list-item contributor-icon">70 contributors</li>
+        <li class="list-group-item icon-list-item contributor-icon ajax-statistic" data-source="number_collaborators"><% include ../partials/loader %></li>
         <li class="list-group-item icon-list-item fork-icon"><%= data.forks_count %> forks</li>
-        <li class="list-group-item icon-list-item commit-icon">356 commits</li>
+        <li class="list-group-item icon-list-item commit-icon ajax-statistic" data-source="number_commits"><% include ../partials/loader %></li>
         <li class="list-group-item icon-list-item issue-icon"><%= data.open_issues_count %> open issues</li>
       </ul>
     </article>
