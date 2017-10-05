@@ -49,6 +49,11 @@
   padding: 5% 0;
 }
 
+/* Vers small padding */
+.padding-xs {
+  padding: 2.5% 0;
+}
+
 /* Large margin */
 .margin-lg {
   margin: 15% 0;
@@ -62,6 +67,11 @@
 /* Small margin */
 .margin-sm {
   margin: 5% 0;
+}
+
+/* Vers small margin */
+.margin-xs {
+  margin: 2.5% 0;
 }
 
 /* Shadow */

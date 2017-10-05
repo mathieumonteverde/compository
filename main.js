@@ -18,10 +18,6 @@ app.use(express.static(__dirname));
 
 // Accès à l'index
 app.get('/', (req, res) => {
-  res.render('pages/index');
-});
-
-app.get('/landing_page', (req, res) => {
   res.render('pages/landing_page');
 });
 
