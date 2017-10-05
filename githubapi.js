@@ -37,7 +37,7 @@ class GitHubAPI {
 
       let numberOfCommits = 1;
 
-      if (link !== 'undefined') {
+      if (link !== undefined) {
         [, numberOfCommits] = link.match(/(\d+)>; rel="last"$/);
       }
 
@@ -52,7 +52,7 @@ class GitHubAPI {
 
       let numberOfContributors = 1;
 
-      if (link !== 'undefined') {
+      if (link !== undefined) {
         [, numberOfContributors] = link.match(/(\d+)>; rel="last"$/);
       }
 
