@@ -9,7 +9,7 @@
   margin-bottom: 10px;
   text-transform: uppercase;
   font-weight: lighter;
-  font-size: 2.1em;
+  font-size: 1.5em;
 }
 .repository-overview h3 {
   font-weight: bold;
@@ -27,4 +27,22 @@
   width: 80%;
   margin-left: 0;
   height: 1px;
+}
+
+.repository-overview .repositiory-description {
+  font-size: 1em;
+  height: 3em;
+  overflow: hidden;
+}
+
+/* CSS behaviour when the overview is in summary mode */
+.repository-overview.summary .repositiory-description,
+.repository-overview.summary .full-name-link,
+.repository-overview.summary hr:not(.subtitle),
+.repository-overview.summary  .repository-stats-list li {
+  display: none;
+}
+
+.repository-overview.summary  .repository-stats-list li.summary-visible {
+  display: block;
 }

@@ -19,40 +19,66 @@
 
     -->
 
-      <section class="row comparison-results padding-sm">
-        <h1 class="text-center"> Comparison results </h1>
-        <hr />
-        <article class="col-md-12 pattern-bg-light">
-          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-xs text-center">
-              <div class="btn-group" role="group">
-                <button type="button" class="btn btn-default">Last Updated</button>
-                <button type="button" class="btn btn-default">Number of contributors</button>
-                <button type="button" class="btn btn-default">Number of commits</button>
-                <button type="button" class="btn btn-default">Number of issues</button>
-              </div>
+      <section class="comparison-results padding-sm">
+        <div class="row">
+          <h1 class="text-center"> Comparison results </h1>
+          <hr />
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 padding-xs text-center">
+            <div class="btn-group" role="group">
+              <!-- Button to expand repository data when it's being ordered -->
+              <button type="button" class="expand-repository-data-button btn btn-default disabled">
+                Expand repositories
+              </button>
+            </div>
+            <div class="btn-group" role="group">
+              <!-- Filter buttons to order repositories statistics -->
+              <button type="button" class="btn btn-default statistic-filter"
+              data-statistic-target="last-update-statistic">
+                Last Updated
+              </button>
+              <button type="button" class="btn btn-default statistic-filter disabled"
+              data-statistic-target="contributors-statistic" data-order="decreasing">
+                Most contributors
+              </button>
+              <button type="button" class="btn btn-default statistic-filter"
+              data-statistic-target="forks-statistic" data-order="decreasing">
+                Most forks
+              </button>
+              <button type="button" class="btn btn-default statistic-filter disabled"
+              data-statistic-target="commits-statistic" data-order="decreasing">
+                Most commits
+              </button>
+              <button type="button" class="btn btn-default statistic-filter"
+              data-statistic-target="issues-statistic">
+                Less issues
+              </button>
             </div>
           </div>
+        </div>
+        <div class="row">
+          <article class="col-md-12 pattern-bg-light">
 
-          <% if (data.numberOfErrors > 0) { %>
-            <!-- Alert for empty repository input -->
-            <div class="row">
-              <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-                <div id="alert-error-occured" class="alert alert-danger text-center" role="alert">
-                  Error: Some or all of the repositories could not be found...
+            <% if (data.numberOfErrors > 0) { %>
+              <!-- Alert for empty repository input -->
+              <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+                  <div id="alert-error-occured" class="alert alert-danger text-center" role="alert">
+                    Error: Some or all of the repositories could not be found...
+                  </div>
                 </div>
               </div>
-            </div>
-          <% } %>
-
-          <section class="repository-listing row">
-
-            <% for (var i=0; i < data.list.length; i++) { %>
-              <%- include("../partials/repository_overview", {data: data.list[i]}) %>
             <% } %>
-          </section>
 
-        </article>
+            <section class="repository-listing row">
+
+              <% for (var i=0; i < data.list.length; i++) { %>
+                <%- include("../partials/repository_overview", {data: data.list[i]}) %>
+              <% } %>
+            </section>
+
+          </article>
+        </div>
       </section>
 
     </section>

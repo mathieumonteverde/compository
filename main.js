@@ -28,13 +28,13 @@ app.get('/compare', (req, res) => {
 
 app.post('/number_commits', (req, res) => {
   githubapi.getNumberOfCommits(req.body.owner, req.body.repository, (response) => {
-    res.send(`${response} commits`);
+    res.send(`${response}`);
   });
 });
 
 app.post('/number_contributors', (req, res) => {
   githubapi.getNumberOfContributors(req.body.owner, req.body.repository, (response) => {
-    res.send(`${response} contributors`);
+    res.send(`${response}`);
   });
 });
 
@@ -77,6 +77,9 @@ app.post('/compare', (req, res) => {
     } else {
       // Convert the date of the pushed_at field
       const date = new Date(json.pushed_at);
+      const nowDate = new Date();
+
+      const hoursDiff = Math.abs(nowDate.getTime() - date.getTime()) / 60 / 60 / 1000;
 
       // Add the main information to the list of repository summaries
       repositoriesSummary.list.push({
@@ -85,6 +88,7 @@ app.post('/compare', (req, res) => {
         owner: json.owner.login,
         description: json.description,
         pushed_at: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`,
+        updated_hours_ago: hoursDiff,
         open_issues_count: json.open_issues_count,
         forks_count: json.forks_count,
       });
