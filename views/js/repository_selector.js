@@ -1,4 +1,14 @@
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "RepositorySelector" }] */
+/*
+  eslint no-unused-vars: ["error", { "varsIgnorePattern": "RepositorySelector" }]
+*/
+
+/*
+  The RepositorySelector class is a plugin to select GitHub repositories.
+  It manages the user input, stores the selected GitHub repositories and sends
+  the request using a POST form method to a specified page.
+
+  Users can add repositories urls and remove them from their selection.
+*/
 class RepositorySelector {
   constructor(options) {
     // Default plugin options definition
@@ -117,13 +127,18 @@ class RepositorySelector {
   }
 
   /*
-    Checks if the Compare button is to be enabled or disabled.
+    Checks if the Compare button must be enabled or disabled.
+
+    This method disables the Compare button if the repository list contains no
+    repository. It enables it otherwise.
   */
   toggleCompareButton() {
     if ($(`${this.options.containerSelector} ${this.options.listItemSelector}`).length === 0) {
-      $(`${this.options.containerSelector} ${this.options.compareButtonSelector}`).addClass('disabled');
+      $(`${this.options.containerSelector} ${this.options.compareButtonSelector}`)
+        .addClass('disabled');
     } else {
-      $(`${this.options.containerSelector} ${this.options.compareButtonSelector}`).removeClass('disabled');
+      $(`${this.options.containerSelector} ${this.options.compareButtonSelector}`)
+        .removeClass('disabled');
     }
   }
 
@@ -149,7 +164,7 @@ class RepositorySelector {
   }
 
   /**
-    Show an error selected by its CSS selector, and hide it a moment later
+    Shows an error selected by its CSS selector, and hide it a moment later
   */
   showError(errorSelector) {
     $(`${this.options.containerSelector} ${errorSelector}`).show(500);
