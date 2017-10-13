@@ -1,5 +1,5 @@
 <!-- Compare section -->
-<section id="compare" class="row padding-md text-center">
+<section id="compare" class="row padding-md text-center repository-selection">
   <article class="white-bg col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 text-center box-shadow padding-sm">
     <h1>Compare repositories</h1>
     <hr/>
@@ -8,28 +8,28 @@
       <article class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1">
 
         <!-- Alert for empty repository input -->
-        <div id="alert-empty-repository" class="alert alert-warning alert-dismissible collapse" role="alert">
+        <div class="alert-empty-repository alert alert-warning alert-dismissible collapse" role="alert">
           You must enter a repository.
         </div>
 
         <!-- Alert for existing repository input -->
-        <div id="alert-exist-repository" class="alert alert-warning alert-dismissible collapse" role="alert">
+        <div class="alert-exist-repository alert alert-warning alert-dismissible collapse" role="alert">
           This repository is already selected !
         </div>
 
         <!-- Input UI -->
         <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">https://github.com/</span>
+          <span class="input-group-addon">https://github.com/</span>
           <input type="text" class="form-control repository-input" placeholder="username/repository" aria-label="username/repository" aria-describedby="basic-addon1">
-          <span class="input-group-addon" id="add-repository">Add</span>
+          <span class="input-group-addon add-repository">Add</span>
         </div>
-        <button id="compare-button" type="button" class="btn btn-primary btn-lg disabled margin-sm">Compare...</button>
+        <button type="button" class="compare-button btn btn-primary btn-lg disabled margin-sm">Compare...</button>
 
         <!-- List of repositories to compare -->
         <article class="repository-list text-left">
           <h5>Repositories to compare:</h5>
           <ul class="list-group">
-            <li class="list-group-item repository-list-item repository-list-item-template">
+            <li class="list-group-item repository-list-item-template">
               <span class="url"></span>
               <span class="control control-delete">remove</span>
             </li>
@@ -41,9 +41,9 @@
 
   </article>
 
-  <form id="compare-form" class="hidden" action="/compare" method="POST">
-    <input id="compare-json" type="text" name="repositories" value=""/>
-    <input id="compare-submit" type="submit" value="Submit">
+  <form class="compare-form hidden" action="/compare" method="POST">
+    <input class="compare-json" type="text" name="repositories" value=""/>
+    <input class="compare-submit" type="submit" value="Submit">
   </form>
 
 </section>
