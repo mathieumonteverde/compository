@@ -74,7 +74,7 @@ app.post('/compare', (req, res) => {
     } else {
       // Parse the response
       const json = JSON.parse(response);
-      
+
       // Convert the date of the pushed_at field
       const date = new Date(json.pushed_at);
       const nowDate = new Date();
