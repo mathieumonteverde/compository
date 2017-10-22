@@ -1,0 +1,58 @@
+/* Transitions */
+.planet-chart-container {
+  -webkit-transition: all 0.5s; /* Safari */
+  transition: all 0.5s;
+}
+
+.planet-chart-container {
+  position: fixed;
+  left: 100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: 100000;
+}
+.planet-chart-container.open {
+  left: 0;
+}
+.planet-chart-visual {
+  float: left;
+  width: 70%;
+  height: 100%;
+
+  background-color: white;
+}
+.planet-chart-info {
+  position: relative;
+  float: left;
+  width: 30%;
+  height: 100%;
+  background-color: white;
+}
+.planet-chart-info .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.planet-chart-info .instructions {
+  margin-top: 50px;
+}
+.planet-chart-info .name-list {
+  margin-top: 30px;
+}
+.planet-chart-info .name-list .name {
+  position: relative;
+  padding: 15px 15px 15px 40px;
+}
+.planet-chart-info .name-list .name h3 {
+  margin: 0;
+  font-size: 1em;
+  font-weight: ligther;
+}
+.planet-chart-info .name-list .name .color-badge{
+  left: 10px;
+  top: 50%;
+  margin-top: -10px;
+  right: auto;
+}

@@ -1,0 +1,9 @@
+.comparison-results {
+  position: relative;
+}
+
+.planet-chart-trigger {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}

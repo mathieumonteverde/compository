@@ -11,15 +11,14 @@
     <% include ../partials/header %>
 
     <section class="container-fluid">
-      <!--
-      TODO add visual representation of the repo.
-      <section class=" row repository-graphic-compare display-height">
 
-      </section>
 
-    -->
+      <%- include("../partials/planet_chart", {data: data}) %>
 
       <section class="comparison-results padding-sm">
+
+        <div class="planet-chart-trigger">Graphic comparison</div>
+
         <div class="row">
           <h1 class="text-center"> Comparison results </h1>
           <hr />
@@ -73,7 +72,7 @@
             <section class="repository-listing row">
 
               <% for (var i=0; i < data.list.length; i++) { %>
-                <%- include("../partials/repository_overview", {data: data.list[i]}) %>
+                <%- include("../partials/repository_overview", {data: data.list[i], count: i}) %>
               <% } %>
             </section>
 

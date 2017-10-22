@@ -13,6 +13,15 @@ function scrollToTarget(elementSelector) {
   }, 'slow');
 }
 
+/*
+  Resize the PlanetChart canvas to fit the page width.
+*/
+function resizeCanvas() {
+  const canvs = document.getElementById('planetChart');
+  canvs.width = $('.planet-chart-visual').innerWidth();
+  canvs.height = $('.planet-chart-visual').innerHeight();
+}
+
 /**
   Returns an array of DOM elements selected by given
   CSS selector.
@@ -24,6 +33,42 @@ function getDOMElementsAsArray(CSSSelector) {
   });
 
   return elementsArray;
+}
+
+function launchPlanetChart() {
+  const data = [];
+  $('.repository-overview').each(function loadData() {
+    const lastUpdate = $(this).find('.last-update-statistic').attr('data-raw');
+    const nbContributors = $(this).find('.contributors-statistic').attr('data-raw');
+    const nbCommits = $(this).find('.commits-statistic').attr('data-raw');
+    const color = $(this).find('.color-badge').css('background-color');
+
+    data.push({
+      size: nbContributors,
+      distance: lastUpdate,
+      speed: nbCommits,
+      color: color,
+    });
+  });
+
+  const icon = new Image();
+  icon.src = 'views/img/mainIcon.png';
+
+  const planetChart = new PlanetChart({
+    canvasID: 'planetChart',
+    data: data,
+    resizable: true,
+    icon: icon,
+  });
+
+  $('.planet-chart-info .close').click(() => {
+    $('.planet-chart-container').removeClass('open');
+    planetChart.pause();
+  });
+  $('.planet-chart-trigger').click(() => {
+    $('.planet-chart-container').addClass('open');
+    planetChart.start();
+  });
 }
 
 $(document).ready(() => {
@@ -39,6 +84,16 @@ $(document).ready(() => {
   const repositorySelector = new RepositorySelector({
     containerSelector: '.repository-selection',
   });
+
+  // resizeCanvas on load
+  resizeCanvas();
+
+  // Resize PlanetChart canvas on window resize
+  $(window).resize(() => {
+    resizeCanvas();
+  });
+
+
 
   /*
     Load each missing statistic through ajax requests
@@ -68,6 +123,11 @@ $(document).ready(() => {
       if ($(`.repository-stats-list li.ajax-statistic[data-source='${dataSource}']`).length === 0) {
         const dataType = target.attr('data-type');
         $(`.statistic-filter[data-statistic-target='${dataType}']`).removeClass('disabled');
+      }
+
+      // If all ajax data is loaded
+      if ($('.repository-stats-list li.ajax-statistic').length === 0) {
+        launchPlanetChart();
       }
     }).fail(() => {
       target.attr('data-raw', -1);

@@ -1,0 +1,25 @@
+<section class="planet-chart-container">
+  <div class="planet-chart-visual">
+    <canvas id="planetChart"></canvas>
+  </div>
+  <div class="planet-chart-info">
+    <div class="close">Close</div>
+
+    <section class="instructions">
+      <ul>
+        <li>The more recently updated, the closer to the center.</li>
+        <li>The more commits, the faster the planet.</li>
+        <li>The more contributors, the bigger the planet.</li>
+      </ul>
+    </section>
+
+    <section class="name-list">
+      <% for (var i=0; i < data.list.length; i++) { %>
+        <div class="name">
+          <div class="color-badge color-badge-<%= i %>"></div>
+          <h3><%=data.list[i].name%></h3>
+        </div>
+      <% } %>
+    </section>
+  </div>
+</section>
