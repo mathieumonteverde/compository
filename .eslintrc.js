@@ -14,5 +14,12 @@ module.exports = {
       "PolarVector": false,
       "Planet": false,
     },
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "rules": {
+      "import/no-extraneous-dependencies": [
+        "error", 
+        {
+          "devDependencies": true,
+        }
+      ]
+    }
 };

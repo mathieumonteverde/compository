@@ -17,14 +17,13 @@ class GitHubAPI {
   }
 
   static getRepo(owner, repo, callback) {
-    
     const options = {
       host: GitHubAPI.host,
       path: `/repos/${owner}/${repo}`,
       port: GitHubAPI.port,
       headers: GitHubAPI.headers,
     };
-    
+
     const req = https.request(options, (response) => {
       let data = '';
 
@@ -33,40 +32,26 @@ class GitHubAPI {
       });
 
       response.on('end', () => {
-        
         // Get json data
-        let json = JSON.parse(data);
-        
+        const json = JSON.parse(data);
+
         // Check if the repo exist
-        if(response.statusCode === 404 &&
-           json.message !== undefined && 
-           json.message === 'Not Found') 
-        {
+        if (response.statusCode === 404 && json.message !== undefined && json.message === 'Not Found') {
           callback(new Error(json.message), null);
-        }
-        
-        // Check if the limit request is exceeded
-        else if(response.statusCode === 403 &&
-                json.message !== undefined && 
-                json.message.startsWith('API rate limit exceeded')) 
-        {
+        } else if (response.statusCode === 403 && json.message !== undefined && json.message.startsWith('API rate limit exceeded')) {
+          // Check if the limit request is exceeded
           callback(new Error(json.message), null);
-        }
-        
-        // Other errors
-        else if(response.statusCode !== 200) {
+        } else if (response.statusCode !== 200) {
+          // Other errors
           callback(new Error('An error occured'), null);
-        }
-        
-        // Call the callback with data
-        else {
+        } else {
+          // Call the callback with data
           callback(null, data);
         }
       });
     });
-    
+
     req.on('error', (e) => {
-      console.log(e);
       callback(e, null);
     });
 
@@ -84,47 +69,32 @@ class GitHubAPI {
   static getNumberOf(url, callback) {
     const options = {
       host: GitHubAPI.host,
-      path: url + '?per_page=1',
+      path: `${url}?per_page=1`,
       port: GitHubAPI.port,
       headers: GitHubAPI.headers,
     };
-    
+
     const req = https.request(options, (response) => {
-      
       let data = '';
-      
+
       response.on('data', (chunk) => {
         data += chunk;
       });
-      
+
       response.on('end', () => {
-        
         // Get json data
-        let json = JSON.parse(data);
-        
+        const json = JSON.parse(data);
+
         // Check if the repo exist
-        if(response.statusCode === 404 &&
-           json.message !== undefined && 
-           json.message === 'Not Found') 
-        {
+        if (response.statusCode === 404 && json.message !== undefined && json.message === 'Not Found') {
           callback(new Error(json.message), null);
-        }
-        
-        // Check if the limit request is exceeded
-        else if(response.statusCode === 403 &&
-                json.message !== undefined && 
-                json.message.startsWith('API rate limit exceeded')) 
-        {
+        } else if (response.statusCode === 403 && json.message !== undefined && json.message.startsWith('API rate limit exceeded')) {
+          // Check if the limit request is exceeded
           callback(new Error(json.message), null);
-        }
-        
-        // Other errors
-        else if(response.statusCode !== 200) {
+        } else if (response.statusCode !== 200) {
+          // Other errors
           callback(new Error('An error occured'), null);
-        }
-        
-        // Call the callback with data
-        else {
+        } else {
           const { headers } = response;
           const { link } = headers;
 
@@ -140,7 +110,6 @@ class GitHubAPI {
     });
 
     req.on('error', (e) => {
-      console.log(e);
       callback(e, null);
     });
 
