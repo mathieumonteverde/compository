@@ -97,7 +97,13 @@ class RepositorySelector {
     Parameters:
     repositoryUrl: the repository url
   */
-  addRepositoryToList(repositoryUrl) {
+  addRepositoryToList(url) {
+    let repositoryUrl = url;
+
+    if (repositoryUrl.indexOf('https://github.com/') >= 0) {
+      repositoryUrl = repositoryUrl.replace('https://github.com/', '');
+    }
+
     // Check the input, and if valid, add it to the list of repositories
     if (!RepositorySelector.isValidRepositoryUrl(repositoryUrl)) {
       this.showError(this.options.errors.emptyRepository);
