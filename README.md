@@ -13,6 +13,7 @@ side by side their statistics. It will also help you exclude dead software from 
 ```
 $ git clone https://github.com/mathieumonteverde/compository.git
 $ cd compository
+$ cd docker
 $ docker-compose up --build
 ```
 
