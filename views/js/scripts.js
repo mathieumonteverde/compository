@@ -71,11 +71,22 @@ function launchPlanetChart() {
     icon,
   });
 
+  // Close Planet chart
   $('.planet-chart-info .close').click(() => {
+    $('html, body').css({
+      overflow: 'auto',
+      height: 'auto',
+    });
     $('.planet-chart-container').removeClass('open');
     planetChart.pause();
   });
+
+  // Planet chart trigger
   $('.planet-chart-trigger').click(() => {
+    $('html, body').css({
+      overflow: 'hidden',
+      height: '100%',
+    });
     $('.planet-chart-container').addClass('open');
     planetChart.start();
   });
