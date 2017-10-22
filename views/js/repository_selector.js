@@ -28,6 +28,7 @@ class RepositorySelector {
       errors: {
         emptyRepository: '.alert-empty-repository',
         existingRepository: '.alert-exist-repository',
+        fullRepository: '.alert-full-repository',
       },
     };
 
@@ -51,21 +52,37 @@ class RepositorySelector {
       const repositoryUrl =
         $(`${this.options.containerSelector} ${this.options.repositoryInputSelector}`)
           .val();
+      // Add the repository
+      this.addRepositoryToList(repositoryUrl);
 
-      // Check the input, and if valid, add it to the list of repositories
-      if (!RepositorySelector.isValidRepositoryUrl(repositoryUrl)) {
-        this.showError(this.options.errors.emptyRepository);
-      } else if ($(`${this.options.containerSelector} ${this.options.listItemSelector}[data-repository-url='${repositoryUrl}']`).length > 0) {
-        this.showError(this.options.errors.existingRepository);
-      } else {
-        this.addRepositoryToList(repositoryUrl);
-      }
+      // Clear value
+      $(`${this.options.containerSelector} ${this.options.repositoryInputSelector}`)
+        .val('');
     });
 
     // Register event on compare button click
     $(`${this.options.containerSelector} ${this.options.compareButtonSelector}`).click(() => {
       if (!$(`${this.options.containerSelector} ${this.options.compareButtonSelector}`).hasClass('disabled')) {
         this.createRepositoryForm();
+      }
+    });
+
+    // Enter key pressed event on repository input
+    $(this.options.repositoryInputSelector).keypress((event) => {
+      if (event.which === 13) {
+        event.preventDefault();
+
+        // Retrieve url
+        const repositoryUrl =
+          $(`${this.options.containerSelector} ${this.options.repositoryInputSelector}`)
+            .val();
+
+        // Add the repository
+        this.addRepositoryToList(repositoryUrl);
+
+        // Clear value
+        $(`${this.options.containerSelector} ${this.options.repositoryInputSelector}`)
+          .val('');
       }
     });
   }
@@ -76,6 +93,18 @@ class RepositorySelector {
     repositoryUrl: the repository url
   */
   addRepositoryToList(repositoryUrl) {
+    // Check the input, and if valid, add it to the list of repositories
+    if (!RepositorySelector.isValidRepositoryUrl(repositoryUrl)) {
+      this.showError(this.options.errors.emptyRepository);
+      return;
+    } else if ($(`${this.options.containerSelector} ${this.options.listItemSelector}[data-repository-url='${repositoryUrl}']`).length > 0) {
+      this.showError(this.options.errors.existingRepository);
+      return;
+    } else if ($(`${this.options.containerSelector} ${this.options.listItemSelector}`).length === 5) {
+      this.showError(this.options.errors.fullRepository);
+      return;
+    }
+
     // Retrieve a copy of the list template from the DOM
     const template =
       $(`${this.options.containerSelector} ${this.options.templateSelector}`)
@@ -168,6 +197,6 @@ class RepositorySelector {
   */
   showError(errorSelector) {
     $(`${this.options.containerSelector} ${errorSelector}`).show(500);
-    setTimeout(() => { $('.alert-empty-repository').hide(500); }, 4000);
+    setTimeout(() => { $(`${this.options.containerSelector} ${errorSelector}`).hide(500); }, 4000);
   }
 }
