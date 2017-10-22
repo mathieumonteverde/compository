@@ -5,7 +5,7 @@
   position: relative;
 }
 
-#add-repository {
+.add-repository {
   cursor: pointer;
 }
 .repository-list .list-group-item .control {

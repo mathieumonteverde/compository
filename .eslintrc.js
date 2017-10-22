@@ -5,5 +5,6 @@ module.exports = {
     },
     "globals" : {
       "document": false,
+      "RepositorySelector": false,
     },
 };
