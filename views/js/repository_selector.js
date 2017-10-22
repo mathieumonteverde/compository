@@ -44,6 +44,12 @@ class RepositorySelector {
     this.registerSetUpEvents();
   }
 
+  // Regex to validate github repos.
+  static get VALID_REPO_URL() {
+    return /^(https:\/\/github.com\/)?[A-Za-z0-9_-]+\/[A-Za-z0-9_-]+$/;
+  }
+
+
   /**
     Register the set up events to manage the user actions on the repository list.
 
@@ -100,15 +106,19 @@ class RepositorySelector {
   addRepositoryToList(url) {
     let repositoryUrl = url;
 
+    // Check if input is valid
+    if (!RepositorySelector.isValidRepositoryUrl(repositoryUrl)) {
+      this.showError(this.options.errors.emptyRepository);
+      return;
+    }
+
+    // Remove optional github website
     if (repositoryUrl.indexOf('https://github.com/') >= 0) {
       repositoryUrl = repositoryUrl.replace('https://github.com/', '');
     }
 
     // Check the input, and if valid, add it to the list of repositories
-    if (!RepositorySelector.isValidRepositoryUrl(repositoryUrl)) {
-      this.showError(this.options.errors.emptyRepository);
-      return;
-    } else if ($(`${this.options.containerSelector} ${this.options.listItemSelector}[data-repository-url='${repositoryUrl}']`).length > 0) {
+    if ($(`${this.options.containerSelector} ${this.options.listItemSelector}[data-repository-url='${repositoryUrl}']`).length > 0) {
       this.showError(this.options.errors.existingRepository);
       return;
     } else if ($(`${this.options.containerSelector} ${this.options.listItemSelector}`).length === 5) {
@@ -200,7 +210,7 @@ class RepositorySelector {
     Check if a GitHub repository url is valid
   */
   static isValidRepositoryUrl(url) {
-    return url !== '';
+    return (url !== '' && url.match(RepositorySelector.VALID_REPO_URL) !== null);
   }
 
   /**
