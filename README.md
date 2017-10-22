@@ -47,7 +47,7 @@ Home made, with love. It's based on the bootstrap framework and we put extra eff
 Obviously.
 
 
-- [ ] **The build process invokes a linter. The linter is happy with the quality of your code (no error).**
+- [x] **The build process invokes a linter. The linter is happy with the quality of your code (no error).**
 
 Yes of course, you can try with the following command :
 
