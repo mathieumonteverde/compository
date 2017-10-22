@@ -1,8 +1,10 @@
+/* eslint no-use-before-define: ["error", { "classes": false }] */
+/* eslint-env es6 */
+
 /**
   Class to represent cartesian vectors.
 */
 class CartesianVector {
-
   /**
     Constructor to build the vector.
     x: x coordinate
@@ -30,7 +32,7 @@ class CartesianVector {
     return: a new PolarVector equivalent to this CartesianVector
   */
   toPolar() {
-    const magnitude = Math.sqrt(this.x * this.x + this.y * this.y);
+    const magnitude = Math.sqrt((this.x * this.x) + (this.y * this.y));
     let angle = Math.acos(this.x / magnitude);
     if (this.y < 0) {
       angle = -angle;
@@ -52,13 +54,12 @@ class CartesianVector {
   Class that represents polar vectors.
 */
 class PolarVector {
-
   /**
     Constructor to build a PolarVector.
     angle: the angle
     radius: the radius
   */
-  constructor (angle, radius) {
+  constructor(angle, radius) {
     this.angle = angle;
     this.radius = radius;
   }

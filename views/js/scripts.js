@@ -18,8 +18,10 @@ function scrollToTarget(elementSelector) {
 */
 function resizeCanvas() {
   const canvs = document.getElementById('planetChart');
-  canvs.width = $('.planet-chart-visual').innerWidth();
-  canvs.height = $('.planet-chart-visual').innerHeight();
+  if (canvs != null && canvs !== undefined) {
+    canvs.width = $('.planet-chart-visual').innerWidth();
+    canvs.height = $('.planet-chart-visual').innerHeight();
+  }
 }
 
 /**
@@ -47,7 +49,7 @@ function launchPlanetChart() {
       size: nbContributors,
       distance: lastUpdate,
       speed: nbCommits,
-      color: color,
+      color,
     });
   });
 
@@ -56,9 +58,9 @@ function launchPlanetChart() {
 
   const planetChart = new PlanetChart({
     canvasID: 'planetChart',
-    data: data,
+    data,
     resizable: true,
-    icon: icon,
+    icon,
   });
 
   $('.planet-chart-info .close').click(() => {
@@ -92,7 +94,6 @@ $(document).ready(() => {
   $(window).resize(() => {
     resizeCanvas();
   });
-
 
 
   /*

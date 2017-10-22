@@ -1,3 +1,14 @@
+/* eslint comma-dangle: ["error", {
+      "arrays": "never",
+      "objects": "always-multiline",
+      "imports": "always",
+      "exports": "always",
+      "functions": "never"}]
+*/
+/*
+  eslint no-unused-vars: ["error", { "varsIgnorePattern": "PlanetChart" }]
+*/
+
 /**
   PlanetChart is a class that allows a user to display data
   as a solar system visualisation.
@@ -15,7 +26,6 @@
   in an other way than a bar graph...
 */
 class PlanetChart {
-
   /**
     Constructor to build a PlanetChart object. Each PlanetChart object must be
     at least be given a HTML5 canvas ID to work with.
@@ -36,6 +46,7 @@ class PlanetChart {
       },
       resizable: false, // If the graph should be resizable
       icon: undefined, // Image object to represent the sun (white circle by default)
+      drawOrbits: false,
     };
 
     // Merge and save the plugin options
@@ -44,7 +55,7 @@ class PlanetChart {
     // Canvas object
     this.c = document.getElementById(this.options.canvasID);
     // Canvas context
-    this.ctx = this.c.getContext("2d");
+    this.ctx = this.c.getContext('2d');
 
     // Constants
     this.computeConstraints();
@@ -62,9 +73,6 @@ class PlanetChart {
     // generate the planets
     this.generatePlanets();
 
-    // Place the planet at different angles
-    const data = this.options.data;
-
     // interval variable
     this.heart = 0;
 
@@ -79,7 +87,7 @@ class PlanetChart {
   computeConstraints() {
     // Constants
     this.RADIUS = 30; // The radius of the main sun
-    this.ICON_RATIO = 0.9; // The icon size in %
+    this.ICON_RATIO = 1; // The icon size in %
     // The maximum space to draw things
     this.AVAILABLE_SPACE = Math.min(this.c.width / 2, this.c.height / 2);
     // Min and max speed of planets
@@ -99,7 +107,7 @@ class PlanetChart {
   */
   generatePlanets() {
     // Get the data array from options
-    const data = this.options.data;
+    const { data } = this.options;
 
     // Create arrays of value
     this.retrieveValuesInArrays();
@@ -108,23 +116,17 @@ class PlanetChart {
     this.computeMinMaxValues();
 
     // Create each planet
-    const DELTA_ANGLE = 2 * Math.PI / data.length;
-    for (let i = 0; i < data.length; ++i) {
-
-      this.planets.push(
-        new Planet(
-          new PolarVector(
-            DELTA_ANGLE * i,
-            this.scaleDistance(data[i].distance)
-          ),
-          this.scaleSize(data[i].size),
-          this.scaleSpeed(data[i].speed),
-          this.pos
-        )
-      );
+    const DELTA_ANGLE = (2 * Math.PI) / data.length;
+    for (let i = 0; i < data.length; i += 1) {
+      this.planets.push(new Planet(
+        new PolarVector(DELTA_ANGLE * i, this.scaleDistance(data[i].distance)),
+        this.scaleSize(data[i].size),
+        this.scaleSpeed(data[i].speed),
+        this.pos
+      ));
 
       // Set the color if provided
-      if (this.planets[i].color != undefined) {
+      if (this.planets[i].color !== undefined) {
         this.planets[i].color = data[i].color;
       }
     }
@@ -135,12 +137,12 @@ class PlanetChart {
     work with raw data easily.
   */
   retrieveValuesInArrays() {
-    const data = this.options.data;
+    const { data } = this.options;
     // Retrieve all values in separate arrays
     this.distances = [];
     this.sizes = [];
     this.speeds = [];
-    for (let i = 0; i < data.length; ++i) {
+    for (let i = 0; i < data.length; i += 1) {
       this.distances.push(data[i].distance);
       this.sizes.push(data[i].size);
       this.speeds.push(data[i].speed);
@@ -152,7 +154,6 @@ class PlanetChart {
     provided in the constructor.
   */
   computeMinMaxValues() {
-    const data = this.options.data;
     // Get min/max value of each property
     this.minDistance = Math.min.apply(null, this.distances);
     this.maxDistance = Math.max.apply(null, this.distances);
@@ -169,9 +170,9 @@ class PlanetChart {
     the constraints.
   */
   updatePlanets() {
-    const data = this.options.data;
+    const { data } = this.options;
 
-    for (let i = 0; i < this.planets.length; ++i) {
+    for (let i = 0; i < this.planets.length; i += 1) {
       this.planets[i].pos.radius = this.scaleDistance(data[i].distance);
       this.planets[i].radius = this.scaleSize(data[i].size);
       this.planets[i].speed = this.scaleSpeed(data[i].speed);
@@ -182,7 +183,7 @@ class PlanetChart {
     Scale a distance value to the constraints range.
   */
   scaleDistance(distance) {
-    return this.scaleProperty(
+    return PlanetChart.scaleProperty(
       distance,
       this.minDistance,
       this.maxDistance,
@@ -195,7 +196,7 @@ class PlanetChart {
     Scale a size value to the constraints range.
   */
   scaleSize(size) {
-    return this.scaleProperty(
+    return PlanetChart.scaleProperty(
       size,
       this.minSize,
       this.maxSize,
@@ -208,7 +209,7 @@ class PlanetChart {
     Scale a speed value to the constraints range.
   */
   scaleSpeed(speed) {
-    return this.scaleProperty(
+    return PlanetChart.scaleProperty(
       speed,
       this.minSpeed,
       this.maxSpeed,
@@ -222,16 +223,16 @@ class PlanetChart {
 
     If the real range is of width 0, it returns the mean of targetA and targetB.
   */
-  scaleProperty(val, realA, realB, targetA, targetB) {
+  static scaleProperty(val, realA, realB, targetA, targetB) {
     const realDistance = realB - realA;
     const targetDistance = targetB - targetA;
     const valDiff = val - realA;
 
     if (realDistance === 0) {
-      return (targetB + targetA) / 2
+      return (targetB + targetA) / 2;
     }
 
-    return targetA + valDiff * (targetDistance / realDistance);
+    return targetA + (valDiff * (targetDistance / realDistance));
   }
 
   /**
@@ -240,7 +241,7 @@ class PlanetChart {
   start() {
     const self = this;
     this.heart = setInterval(
-      function () {
+      () => {
         self.move();
         self.draw();
       },
@@ -261,7 +262,8 @@ class PlanetChart {
   move() {
     // update constraints and planets properties if asked by the user
     if (this.options.resizable === true) {
-      if (++this.counter >= 25) {
+      this.counter += 1;
+      if (this.counter >= 25) {
         // The position of the origin
         this.pos.x = this.c.width * this.options.position.x;
         this.pos.y = this.c.height * this.options.position.y;
@@ -276,7 +278,7 @@ class PlanetChart {
     }
 
     // Move planets
-    for (let i = 0; i < this.planets.length; ++i) {
+    for (let i = 0; i < this.planets.length; i += 1) {
       this.planets[i].move();
     }
   }
@@ -288,36 +290,48 @@ class PlanetChart {
     // Clear canvas
     this.ctx.clearRect(0, 0, this.c.width, this.c.height);
 
+    // Draw orbits and lines
+    for (let i = 0; i < this.planets.length; i += 1) {
+      // Draw a line
+      const planetPos = this.planets[i].pos.toCartesian();
+      this.ctx.beginPath();
+      this.ctx.moveTo(this.pos.x, this.pos.y);
+      this.ctx.lineTo(this.pos.x + planetPos.x, this.pos.y + planetPos.y);
+      this.ctx.strokeStyle = this.planets[i].color;
+      this.ctx.lineWidth = 1;
+      this.ctx.stroke();
+      this.ctx.closePath();
+
+      // Draw the orbit
+      if (this.options.drawOrbits === true) {
+        this.ctx.beginPath();
+        this.ctx.arc(this.pos.x, this.pos.y, this.planets[i].pos.radius, 0, 2 * Math.PI, false);
+        this.ctx.strokeStyle = this.planets[i].color;
+        this.ctx.lineWidth = 1;
+        this.ctx.stroke();
+        this.ctx.closePath();
+      }
+    }
+
     // Draw Sun
     this.ctx.beginPath();
     this.ctx.arc(this.pos.x, this.pos.y, this.RADIUS, 0, 2 * Math.PI, false);
     this.ctx.fillStyle = 'white';
     this.ctx.fill();
 
-    if (this.options.icon != undefined) {
+    if (this.options.icon !== undefined) {
       this.ctx.drawImage(
         this.options.icon,
-        this.pos.x - this.RADIUS * this.ICON_RATIO,
-        this.pos.y - this.RADIUS * this.ICON_RATIO,
+        this.pos.x - (this.RADIUS * this.ICON_RATIO),
+        this.pos.y - (this.RADIUS * this.ICON_RATIO),
         this.RADIUS * 2 * this.ICON_RATIO,
         this.RADIUS * 2 * this.ICON_RATIO
       );
     }
     this.ctx.closePath();
 
-    // Draw orbits
-    for (let i = 0; i < this.planets.length; ++i) {
-      this.ctx.beginPath();
-      this.ctx.arc(this.pos.x, this.pos.y, this.planets[i].pos.radius, 0, 2 * Math.PI, false);
-      this.ctx.strokeStyle = this.planets[i].color;
-      this.ctx.lineWidth = 1;
-      this.ctx.stroke();
-      this.ctx.arc(this.pos.x, this.pos.y, this.planets[i].pos.radius, 0, 2 * Math.PI, false);
-      this.ctx.closePath();
-    }
-
     // Draw planets
-    for (let i = 0; i < this.planets.length; ++i) {
+    for (let i = 0; i < this.planets.length; i += 1) {
       this.planets[i].draw(this.ctx);
     }
   }

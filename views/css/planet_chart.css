@@ -28,22 +28,25 @@
   float: left;
   width: 30%;
   height: 100%;
-  background-color: white;
+  padding: 5% 2.5%;
+  overflow: scroll;
+  background-color: #eee;
 }
 .planet-chart-info .close {
   position: absolute;
-  right: 10px;
+  left: 10%;
   top: 10px;
-}
-.planet-chart-info .instructions {
-  margin-top: 50px;
-}
-.planet-chart-info .name-list {
-  margin-top: 30px;
+
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  color: black !important;
+  opacity: 1;
+  font-weight: normal;
 }
 .planet-chart-info .name-list .name {
   position: relative;
-  padding: 15px 15px 15px 40px;
+  padding: 10px 10px 10px 40px;
 }
 .planet-chart-info .name-list .name h3 {
   margin: 0;

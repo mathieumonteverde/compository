@@ -3,17 +3,27 @@
     <canvas id="planetChart"></canvas>
   </div>
   <div class="planet-chart-info">
-    <div class="close">Close</div>
+    <div class="close">< Back to statistics</div>
 
     <section class="instructions">
-      <ul>
-        <li>The more recently updated, the closer to the center.</li>
-        <li>The more commits, the faster the planet.</li>
-        <li>The more contributors, the bigger the planet.</li>
+      <h3>Explanations</h3>
+      <p>
+        Each repository is represented by a planet following these rules:
+      </p>
+      <ul class="list-group">
+        <li class="list-group-item">The more recently updated, the closer to the center.</li>
+        <li class="list-group-item">The more commits, the faster the planet.</li>
+        <li class="list-group-item">The more contributors, the bigger the planet.</li>
       </ul>
+
+      <p>
+        Your ideal repository is basically the biggest, fastest planet that is
+        also the closest to the center...
+      </p>
     </section>
 
     <section class="name-list">
+      <h3>Repositories</h3>
       <% for (var i=0; i < data.list.length; i++) { %>
         <div class="name">
           <div class="color-badge color-badge-<%= i %>"></div>
