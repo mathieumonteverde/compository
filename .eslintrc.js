@@ -2,6 +2,7 @@ module.exports = {
     "extends": "airbnb-base",
     "env": {
       "jquery": true,
+      "mocha": true,
     },
     "globals" : {
       "document": false,
@@ -13,4 +14,5 @@ module.exports = {
       "PolarVector": false,
       "Planet": false,
     },
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
 };

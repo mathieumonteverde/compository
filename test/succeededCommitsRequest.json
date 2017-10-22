@@ -1,0 +1,83 @@
+[
+  {
+    "sha": "7da88191b4ba77467a8dde1156de439cc8258c91",
+    "commit": {
+      "author": {
+        "name": "Katrina Owen",
+        "email": "kytrinyx@github.com",
+        "date": "2017-10-16T22:23:25Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2017-10-16T22:23:25Z"
+      },
+      "message": "Merge pull request #949 from iCreateJB/f/update-request-documentation\n\nUpdate documentation on additional query parameters.",
+      "tree": {
+        "sha": "9ee152b1186f8af323cb80689fa5defb85b5403e",
+        "url": "https://api.github.com/repos/octokit/octokit.rb/git/trees/9ee152b1186f8af323cb80689fa5defb85b5403e"
+      },
+      "url": "https://api.github.com/repos/octokit/octokit.rb/git/commits/7da88191b4ba77467a8dde1156de439cc8258c91",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null
+      }
+    },
+    "url": "https://api.github.com/repos/octokit/octokit.rb/commits/7da88191b4ba77467a8dde1156de439cc8258c91",
+    "html_url": "https://github.com/octokit/octokit.rb/commit/7da88191b4ba77467a8dde1156de439cc8258c91",
+    "comments_url": "https://api.github.com/repos/octokit/octokit.rb/commits/7da88191b4ba77467a8dde1156de439cc8258c91/comments",
+    "author": {
+      "login": "kytrinyx",
+      "id": 276834,
+      "avatar_url": "https://avatars1.githubusercontent.com/u/276834?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/kytrinyx",
+      "html_url": "https://github.com/kytrinyx",
+      "followers_url": "https://api.github.com/users/kytrinyx/followers",
+      "following_url": "https://api.github.com/users/kytrinyx/following{/other_user}",
+      "gists_url": "https://api.github.com/users/kytrinyx/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/kytrinyx/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/kytrinyx/subscriptions",
+      "organizations_url": "https://api.github.com/users/kytrinyx/orgs",
+      "repos_url": "https://api.github.com/users/kytrinyx/repos",
+      "events_url": "https://api.github.com/users/kytrinyx/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/kytrinyx/received_events",
+      "type": "User",
+      "site_admin": true
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "0848070fc91a60415aa3359b6a16aa1c24568339",
+        "url": "https://api.github.com/repos/octokit/octokit.rb/commits/0848070fc91a60415aa3359b6a16aa1c24568339",
+        "html_url": "https://github.com/octokit/octokit.rb/commit/0848070fc91a60415aa3359b6a16aa1c24568339"
+      },
+      {
+        "sha": "86e558bdbc7a683cc94f204269eda500819b923f",
+        "url": "https://api.github.com/repos/octokit/octokit.rb/commits/86e558bdbc7a683cc94f204269eda500819b923f",
+        "html_url": "https://github.com/octokit/octokit.rb/commit/86e558bdbc7a683cc94f204269eda500819b923f"
+      }
+    ]
+  }
+]

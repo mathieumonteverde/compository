@@ -27,13 +27,13 @@ app.get('/compare', (req, res) => {
 });
 
 app.post('/number_commits', (req, res) => {
-  githubapi.getNumberOfCommits(req.body.owner, req.body.repository, (response) => {
+  githubapi.getNumberOfCommits(req.body.owner, req.body.repository, (err, response) => {
     res.send(`${response}`);
   });
 });
 
 app.post('/number_contributors', (req, res) => {
-  githubapi.getNumberOfContributors(req.body.owner, req.body.repository, (response) => {
+  githubapi.getNumberOfContributors(req.body.owner, req.body.repository, (err, response) => {
     res.send(`${response}`);
   });
 });
@@ -61,20 +61,20 @@ app.post('/compare', (req, res) => {
   /*
     Function to process every github api response.
   */
-  const processGithubResponse = (response) => {
-    // Parse the response
-    const json = JSON.parse(response);
-
+  const processGithubResponse = (err, response) => {
     /*
       The GitHub API response will have a 'message' property set to 'Not Found'
       if the request could not be fullfilled...
       Check if the request was a success, and if it's the case, add the main
       information fields to the list of repository summaries.
       */
-    if (json.message !== undefined && json.message === 'Not Found') {
+    if (err) {
       // Increase the number the number of error on repository request
       repositoriesSummary.numberOfErrors += 1;
     } else {
+      // Parse the response
+      const json = JSON.parse(response);
+      
       // Convert the date of the pushed_at field
       const date = new Date(json.pushed_at);
       const nowDate = new Date();
