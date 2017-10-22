@@ -8,5 +8,12 @@ module.exports = {
       "document": false,
       "RepositorySelector": false,
     },
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "rules": {
+      "import/no-extraneous-dependencies": [
+        "error", 
+        {
+          "devDependencies": true,
+        }
+      ]
+    }
 };
