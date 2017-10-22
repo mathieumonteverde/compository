@@ -49,7 +49,11 @@ Obviously.
 
 - [ ] **The build process invokes a linter. The linter is happy with the quality of your code (no error).**
 
-... TODO ?
+Yes of course, you can try with the following command :
+
+```bash
+npm run build
+```
 
 
 - [x] **The app fetches data from GitHub and presents it in the UI.**
