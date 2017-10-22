@@ -17,7 +17,15 @@ class GitHubAPI {
   }
 
   static getRepo(owner, repo, callback) {
-    this.request(`/repos/${owner}/${repo}`, (response) => {
+    
+    const options = {
+      host: GitHubAPI.host,
+      path: `/repos/${owner}/${repo}`,
+      port: GitHubAPI.port,
+      headers: GitHubAPI.headers,
+    };
+    
+    const req = https.request(options, (response) => {
       let data = '';
 
       response.on('data', (chunk) => {
@@ -25,9 +33,44 @@ class GitHubAPI {
       });
 
       response.on('end', () => {
-        callback(data);
+        
+        // Get json data
+        let json = JSON.parse(data);
+        
+        // Check if the repo exist
+        if(response.statusCode === 404 &&
+           json.message !== undefined && 
+           json.message === 'Not Found') 
+        {
+          callback(new Error(json.message), null);
+        }
+        
+        // Check if the limit request is exceeded
+        else if(response.statusCode === 403 &&
+                json.message !== undefined && 
+                json.message.startsWith('API rate limit exceeded')) 
+        {
+          callback(new Error(json.message), null);
+        }
+        
+        // Other errors
+        else if(response.statusCode !== 200) {
+          callback(new Error('An error occured'), null);
+        }
+        
+        // Call the callback with data
+        else {
+          callback(null, data);
+        }
       });
     });
+    
+    req.on('error', (e) => {
+      console.log(e);
+      callback(e, null);
+    });
+
+    req.end();
   }
 
   static getNumberOfCommits(owner, repo, callback) {
@@ -69,7 +112,7 @@ class GitHubAPI {
       headers: GitHubAPI.headers,
     };
 
-    // Traitement de la requête
+    // Traitement de la requête 
     const r = https.request(options, callback);
 
     r.end();
