@@ -1,3 +1,10 @@
+/**
+  file: repository_overview.css
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
+  Style for the repository-overview modules.
+*/
+
 .repository-overview-container {
   padding: 2.5%;
 }

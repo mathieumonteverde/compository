@@ -1,3 +1,10 @@
+/**
+  file: githubapi.js
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
+  Contains the GitHubAPI class.
+*/
+
 const https = require('https');
 
 class GitHubAPI {

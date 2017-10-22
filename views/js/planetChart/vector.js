@@ -1,5 +1,12 @@
 /* eslint no-use-before-define: ["error", { "classes": false }] */
 /* eslint-env es6 */
+/**
+  file: vector.js
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
+  Contains CartesianVector et PolarVector classes.
+*/
+
 
 /**
   Class to represent cartesian vectors.

@@ -1,3 +1,9 @@
+/**
+  file: githubapi.js
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
+  Contains tests for the githubapi.js file.
+*/
 
 const fs = require('fs');
 const chai = require('chai');

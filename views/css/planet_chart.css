@@ -1,3 +1,10 @@
+/**
+  file: planet_chart.css
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
+  Style for the PlanetChar.js module.
+*/
+
 /* Transitions */
 .planet-chart-container {
   -webkit-transition: all 0.5s; /* Safari */

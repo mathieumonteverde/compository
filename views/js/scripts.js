@@ -2,6 +2,14 @@
   eslint no-unused-vars: ["error", { "varsIgnorePattern": "repositorySelector" }]
 */
 
+/**
+  file: scripts.js
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
+  Contains misc scripts for the client side application.
+*/
+
+
 /*
   Scrolls to the element targeted by the given selector.
   Parameters:

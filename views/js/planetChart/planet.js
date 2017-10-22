@@ -1,3 +1,10 @@
+/**
+  file: planet.js
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
+  Contains the Planet class.
+*/
+
 /* eslint comma-dangle: ["error", {
       "arrays": "never",
       "objects": "always-multiline",

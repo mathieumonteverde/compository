@@ -1,3 +1,10 @@
+/**
+  file: planetChart.js
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
+  Contains the PlanetChart.js plugin.
+*/
+
 /* eslint comma-dangle: ["error", {
       "arrays": "never",
       "objects": "always-multiline",
@@ -5,6 +12,7 @@
       "exports": "always",
       "functions": "never"}]
 */
+
 /*
   eslint no-unused-vars: ["error", { "varsIgnorePattern": "PlanetChart" }]
 */

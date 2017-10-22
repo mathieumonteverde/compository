@@ -1,3 +1,10 @@
+/**
+  file: repository_selection.css
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
+  Style for the repository selection plugin.
+*/
+
 .repository-list-item-template {
   display: none;
 }

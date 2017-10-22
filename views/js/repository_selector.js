@@ -1,7 +1,12 @@
 /*
   eslint no-unused-vars: ["error", { "varsIgnorePattern": "RepositorySelector" }]
 */
+/**
+  file: repository_selector.js
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
 
+  Contains the RepositorySelector plugin.
+*/
 /*
   The RepositorySelector class is a plugin to select GitHub repositories.
   It manages the user input, stores the selected GitHub repositories and sends

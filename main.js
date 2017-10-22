@@ -1,3 +1,10 @@
+/**
+  file: main.js
+  authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
+  Contains the main server application.
+*/
+
 const express = require('express');
 const githubapi = require('./githubapi.js');
 const bodyParser = require('body-parser');
