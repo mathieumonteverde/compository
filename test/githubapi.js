@@ -92,5 +92,60 @@ describe('GET repo', () => {
   });
 });
 
-
+describe('GET number of commits', () => {
+  beforeEach(() =>{
+    
+    // Succeeded repo request
+    let succeededCommit = JSON.parse(
+      fs.readFileSync(__dirname + '/succeededCommitsRequest.json', 'utf8')
+    );
+    
+    nock('https://api.github.com')
+      .get('/repos/octokit/octokit.rb/commits?per_page=1')
+      .reply(200, succeededCommit, {
+        'Link': '<https://api.github.com/repositories/417862/commits?per_page=1&page=2>; rel="next", <https://api.github.com/repositories/417862/commits?per_page=1&page=2385>; rel="last"'
+      });
+  });
   
+  
+  it('should return number of commits of octokit/octokit.rb', (done) => {
+    // Get a repo
+    githubapi.getNumberOfCommits('octokit', 'octokit.rb', (err, response) => {
+      should.not.exist(err);
+      should.exist(response);
+      response.should.be.a('string');
+      response.should.equals('2385');
+      
+      done();
+    });
+  });
+});
+
+describe('GET number of contributors', () => {
+  beforeEach(() =>{
+    
+    // Succeeded repo request
+    let succeededContributors = JSON.parse(
+      fs.readFileSync(__dirname + '/succeededContributorsRequest.json', 'utf8')
+    );
+    
+    nock('https://api.github.com')
+      .get('/repos/octokit/octokit.rb/contributors?per_page=1')
+      .reply(200, succeededContributors, {
+        'Link': '<https://api.github.com/repositories/417862/contributors?per_page=1&page=2>; rel="next", <https://api.github.com/repositories/417862/contributors?per_page=1&page=189>; rel="last"'
+      });
+  });
+  
+  
+  it('should return number of contributors of octokit/octokit.rb', (done) => {
+    // Get a repo
+    githubapi.getNumberOfContributors('octokit', 'octokit.rb', (err, response) => {
+      should.not.exist(err);
+      should.exist(response);
+      response.should.be.a('string');
+      response.should.equals('189');
+      
+      done();
+    });
+  });
+});
