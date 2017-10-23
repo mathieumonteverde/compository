@@ -114,6 +114,15 @@ $(document).ready(() => {
     resizeCanvas();
   });
 
+  $('.planet-chart-info .expand').click(function expand() {
+    $('.planet-chart-info').toggleClass('open');
+    if ($('.planet-chart-info').hasClass('open')) {
+      $(this).html('-');
+    } else {
+      $(this).html('+');
+    }
+  });
+
 
   /*
     Load each missing statistic through ajax requests

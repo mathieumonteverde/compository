@@ -23,10 +23,25 @@ class GitHubAPI {
     };
   }
 
+  static get githubSecret() {
+    if (process.env.github_secret === undefined) {
+      return '';
+    }
+
+    return process.env.github_secret;
+  }
+
+  static get clientID() {
+    if (process.env.github_id === undefined) {
+      return '';
+    }
+    return process.env.github_id;
+  }
+
   static getRepo(owner, repo, callback) {
     const options = {
       host: GitHubAPI.host,
-      path: `/repos/${owner}/${repo}`,
+      path: `/repos/${owner}/${repo}?client_id=${GitHubAPI.clientID}&client_secret=${GitHubAPI.githubSecret}`,
       port: GitHubAPI.port,
       headers: GitHubAPI.headers,
     };
@@ -76,7 +91,7 @@ class GitHubAPI {
   static getNumberOf(url, callback) {
     const options = {
       host: GitHubAPI.host,
-      path: `${url}?per_page=1`,
+      path: `${url}?per_page=1&client_id=${GitHubAPI.clientID}&client_secret=${GitHubAPI.githubSecret}`,
       port: GitHubAPI.port,
       headers: GitHubAPI.headers,
     };

@@ -8,6 +8,7 @@
 const express = require('express');
 const githubapi = require('./githubapi.js');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const app = express();
 
