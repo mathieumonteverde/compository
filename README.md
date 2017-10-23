@@ -1,6 +1,6 @@
 # Compository
 
-Authors: Sathiya Kirushnapillai & Mathieu Monteverde
+*Authors: Sathiya Kirushnapillai & Mathieu Monteverde*
 
 Compository is a web application that allows users to compare the activity of GitHub repositories.
 
