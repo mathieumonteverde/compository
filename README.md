@@ -30,7 +30,7 @@ Here's the list of implemented features, and criteria that have been respected.
 ### Mandatory 
 - [ ] **The app is online and publicly available**
 
-The application is online and available at XXX.XXX.com. TODO
+The application is online and available at [https://compository.herokuapp.com/](https://compository.herokuapp.com/).
 
 
 - [x] **Someone arriving on the app, without prior knowledge of the project, understands what it is about and can use it.**
