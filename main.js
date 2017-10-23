@@ -12,7 +12,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // Spécifie le port d'accès au serveur
-app.listen(9090);
+app.listen(process.env.PORT || 9090);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
