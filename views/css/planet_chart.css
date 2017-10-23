@@ -105,6 +105,7 @@
   }
   .planet-chart-info.open {
     height: 100%;
+    overflow: scroll;
   }
   .planet-chart-info .expand {
     display: block;

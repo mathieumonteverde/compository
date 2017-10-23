@@ -1,10 +1,19 @@
 # Compository
 
-Compository is a web application that allows users to compare GitHub repositories.
+Compository is a web application that allows users to compare the activity of GitHub repositories.
 
 If you hesitate between several different librairies to use in your projects, Compository will
 help you make a choice by showing you which GitHub repositories are the more active, and by comparing
 side by side their statistics. It will also help you exclude dead software from your options.
+
+## Build
+
+Our build process is quite simple. It triggers the ESLint tests to validate js files.
+
+```bash
+npm run build
+```
+
 
 ## Installation
 
@@ -28,7 +37,7 @@ You can now access to the application via: [http://localhost:9090](http://localh
 Here's the list of implemented features, and criteria that have been respected.
 
 ### Mandatory 
-- [ ] **The app is online and publicly available**
+- [x] **The app is online and publicly available**
 
 The application is online and available at [https://compository.herokuapp.com/](https://compository.herokuapp.com/).
 

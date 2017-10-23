@@ -92,6 +92,9 @@ function launchPlanetChart() {
   });
 }
 
+/**
+  Actions to do when the document has been loaded.
+*/
 $(document).ready(() => {
   /*
     Register event to scroll to targeted elements on button click
@@ -114,6 +117,9 @@ $(document).ready(() => {
     resizeCanvas();
   });
 
+  /**
+    Register action to expand, minimise planet chart information.
+  */
   $('.planet-chart-info .expand').click(function expand() {
     $('.planet-chart-info').toggleClass('open');
     if ($('.planet-chart-info').hasClass('open')) {
@@ -122,7 +128,6 @@ $(document).ready(() => {
       $(this).html('+');
     }
   });
-
 
   /*
     Load each missing statistic through ajax requests
