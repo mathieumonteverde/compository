@@ -1,5 +1,7 @@
 # Compository
 
+Authors: Sathiya Kirushnapillai & Mathieu Monteverde
+
 Compository is a web application that allows users to compare the activity of GitHub repositories.
 
 If you hesitate between several different librairies to use in your projects, Compository will
